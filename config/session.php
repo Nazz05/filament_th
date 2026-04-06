@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Str;
 
+$appUrlPath = trim((string) parse_url(env('APP_URL', '/'), PHP_URL_PATH), '/');
+
 return [
 
     /*
@@ -128,7 +130,7 @@ return [
 
     'cookie' => env(
         'SESSION_COOKIE',
-        Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
+        Str::slug(env('APP_NAME', 'laravel'), '_').($appUrlPath !== '' ? '_'.$appUrlPath : '').'_session'
     ),
 
     /*
@@ -141,9 +143,7 @@ return [
     | your application but you are free to change this when necessary.
     |
     */
-
-    'path' => '/',
-
+    'path' => env('SESSION_PATH', $appUrlPath === '' ? '/' : '/'.$appUrlPath),
     /*
     |--------------------------------------------------------------------------
     | Session Cookie Domain
@@ -155,8 +155,8 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN'),
 
+    'domain' => env('SESSION_DOMAIN', null),
     /*
     |--------------------------------------------------------------------------
     | HTTPS Only Cookies
