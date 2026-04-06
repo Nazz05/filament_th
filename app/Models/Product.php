@@ -34,4 +34,12 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+
+    public function getFinalPriceAttribute(): float
+    {
+        $price = (float) $this->price;
+        $discount = (int) $this->discount_percent;
+
+        return max(0, $price * (1 - ($discount / 100)));
+    }
 }

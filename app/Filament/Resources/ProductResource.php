@@ -115,6 +115,10 @@ class ProductResource extends Resource
                     ->label('Giá')
                     ->formatStateUsing(fn ($state): string => number_format((float) $state, 0, ',', '.') . ' VNĐ')
                     ->sortable(),
+                Tables\Columns\TextColumn::make('final_price')
+                    ->label('Giá sau giảm')
+                    ->formatStateUsing(fn ($state): string => number_format((float) $state, 0, ',', '.') . ' VNĐ')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('discount_percent')
                     ->label('Giảm (%)')
                     ->suffix('%')
