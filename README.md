@@ -57,7 +57,7 @@ Phan he admin quan ly Danh muc va San pham duoc xay dung bang Laravel 10 + Filam
 - Hien thi xem nhanh gia sau giam trong form.
 - Bang danh sach co cot `Gia sau giam`.
 
-## Cai dat va chay
+## Cai dat va chay (localhost - XAMPP)
 
 1. Cai dependency:
 
@@ -92,10 +92,9 @@ php artisan storage:link
 php artisan make:filament-user
 ```
 
-7. Chay project:
+7. Bat Apache + MySQL trong XAMPP Control Panel.
 
-```bash
-php artisan serve
-```
+8. Truy cap project tren localhost:
 
-Truy cap admin: `http://localhost:8000/admin`
+- Trang chu: `http://localhost/filament`
+- Admin login: `http://localhost/filament/admin/login`
